@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a7a59920e4fa4b46a2d1312c627a6250" Name="Diagram1" ZoomLevel="101">
+        <EntityTypeShape EntityType="FTPAppModel.City" Width="1.5" PointX="0.75" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FTPAppModel.Department" Width="1.5" PointX="0.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="FTPAppModel.Designation" Width="1.5" PointX="0.75" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FTPAppModel.Employee" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FTPAppModel.Province" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FTPAppModel.State" Width="1.5" PointX="0.75" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FTPAppModel.vw_Employee" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="FTPAppModel.FK_Employees_CityName" ManuallyRouted="false" />
+        <AssociationConnector Association="FTPAppModel.FK_Employees_DepartmentName" ManuallyRouted="false" />
+        <AssociationConnector Association="FTPAppModel.FK_Employees_Designation" ManuallyRouted="false" />
+        <AssociationConnector Association="FTPAppModel.FK_Employees_Province" ManuallyRouted="false" />
+        <AssociationConnector Association="FTPAppModel.FK_Employees_StatesName" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
