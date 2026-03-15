@@ -22,6 +22,12 @@ namespace BusinessLogic
                 .Employees.SingleOrDefault(x => x.EmployeeID == employeeId);
         }
 
+        public static vw_Employee GetEmployeeViewById(int employeeId)
+        {
+            return new FTPAppEntities()
+                .vw_Employee.SingleOrDefault(x => x.EmployeeID == employeeId);
+        }
+
         public static bool SaveEmployee(Employee employee) //Add
         {
             try
@@ -34,7 +40,7 @@ namespace BusinessLogic
                     if (existingRecord != null) //Update
                     {
                         existingRecord.FirstName = employee.FirstName;
-                        existingRecord.LastName = employee.LastName;
+                        existingRecord.LastName = employee.LastName; 
                     }
                     else
                     {

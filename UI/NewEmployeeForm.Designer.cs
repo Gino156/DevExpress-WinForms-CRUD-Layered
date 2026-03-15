@@ -40,6 +40,8 @@
             this.lciFullName = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.cbPrefix = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.Prefix = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TxtFullName.Properties)).BeginInit();
@@ -51,10 +53,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.lciFullName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbPrefix.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Prefix)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
             // 
+            this.layoutControl1.Controls.Add(this.cbPrefix);
             this.layoutControl1.Controls.Add(this.simpleButtonSave);
             this.layoutControl1.Controls.Add(this.TxtFullName);
             this.layoutControl1.Controls.Add(this.TxtLastName);
@@ -64,14 +69,14 @@
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(791, 0, 650, 400);
             this.layoutControl1.Root = this.Root;
-            this.layoutControl1.Size = new System.Drawing.Size(487, 120);
+            this.layoutControl1.Size = new System.Drawing.Size(487, 158);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
             // simpleButtonSave
             // 
             this.simpleButtonSave.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButtonSave.ImageOptions.Image")));
-            this.simpleButtonSave.Location = new System.Drawing.Point(380, 84);
+            this.simpleButtonSave.Location = new System.Drawing.Point(380, 108);
             this.simpleButtonSave.Name = "simpleButtonSave";
             this.simpleButtonSave.Size = new System.Drawing.Size(95, 22);
             this.simpleButtonSave.StyleController = this.layoutControl1;
@@ -83,6 +88,7 @@
             // 
             this.TxtFullName.Location = new System.Drawing.Point(66, 60);
             this.TxtFullName.Name = "TxtFullName";
+            this.TxtFullName.Properties.ReadOnly = true;
             this.TxtFullName.Size = new System.Drawing.Size(409, 20);
             this.TxtFullName.StyleController = this.layoutControl1;
             this.TxtFullName.TabIndex = 6;
@@ -94,6 +100,7 @@
             this.TxtLastName.Size = new System.Drawing.Size(409, 20);
             this.TxtLastName.StyleController = this.layoutControl1;
             this.TxtLastName.TabIndex = 5;
+            this.TxtLastName.EditValueChanged += new System.EventHandler(this.TxtLastName_EditValueChanged);
             // 
             // TxtFirstName
             // 
@@ -102,6 +109,7 @@
             this.TxtFirstName.Size = new System.Drawing.Size(409, 20);
             this.TxtFirstName.StyleController = this.layoutControl1;
             this.TxtFirstName.TabIndex = 4;
+            this.TxtFirstName.EditValueChanged += new System.EventHandler(this.TxtFirstName_EditValueChanged);
             // 
             // Root
             // 
@@ -112,9 +120,10 @@
             this.lciLastName,
             this.lciFullName,
             this.emptySpaceItem1,
-            this.layoutControlItem1});
+            this.layoutControlItem1,
+            this.Prefix});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(487, 120);
+            this.Root.Size = new System.Drawing.Size(487, 158);
             this.Root.TextVisible = false;
             // 
             // lciFirstName
@@ -149,25 +158,46 @@
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 72);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 96);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(368, 28);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(368, 42);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem1
             // 
             this.layoutControlItem1.Control = this.simpleButtonSave;
-            this.layoutControlItem1.Location = new System.Drawing.Point(368, 72);
+            this.layoutControlItem1.Location = new System.Drawing.Point(368, 96);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(99, 28);
+            this.layoutControlItem1.Size = new System.Drawing.Size(99, 42);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
+            // 
+            // cbPrefix
+            // 
+            this.cbPrefix.Location = new System.Drawing.Point(66, 84);
+            this.cbPrefix.Name = "cbPrefix";
+            this.cbPrefix.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cbPrefix.Properties.Items.AddRange(new object[] {
+            "Mr.",
+            "Ms."});
+            this.cbPrefix.Size = new System.Drawing.Size(409, 20);
+            this.cbPrefix.StyleController = this.layoutControl1;
+            this.cbPrefix.TabIndex = 8;
+            // 
+            // Prefix
+            // 
+            this.Prefix.Control = this.cbPrefix;
+            this.Prefix.Location = new System.Drawing.Point(0, 72);
+            this.Prefix.Name = "Prefix";
+            this.Prefix.Size = new System.Drawing.Size(467, 24);
+            this.Prefix.TextSize = new System.Drawing.Size(51, 13);
             // 
             // NewEmployeeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(487, 120);
+            this.ClientSize = new System.Drawing.Size(487, 158);
             this.Controls.Add(this.layoutControl1);
             this.Name = "NewEmployeeForm";
             this.Text = "NewEmployeeForm";
@@ -182,6 +212,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.lciFullName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbPrefix.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Prefix)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -199,5 +231,7 @@
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem1;
         private DevExpress.XtraEditors.SimpleButton simpleButtonSave;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
+        private DevExpress.XtraEditors.ComboBoxEdit cbPrefix;
+        private DevExpress.XtraLayout.LayoutControlItem Prefix;
     }
 }
