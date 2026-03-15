@@ -30,12 +30,20 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            DevExpress.XtraGrid.GridFormatRule gridFormatRule1 = new DevExpress.XtraGrid.GridFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleExpression formatConditionRuleExpression1 = new DevExpress.XtraEditors.FormatConditionRuleExpression();
+            DevExpress.XtraGrid.GridFormatRule gridFormatRule2 = new DevExpress.XtraGrid.GridFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleExpression formatConditionRuleExpression2 = new DevExpress.XtraEditors.FormatConditionRuleExpression();
+            this.colPrefix = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.bbiAdd = new DevExpress.XtraBars.BarButtonItem();
             this.bbiEdit = new DevExpress.XtraBars.BarButtonItem();
             this.bbiDelete = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiExport = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiTenure = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.gcEmployee = new DevExpress.XtraGrid.GridControl();
             this.vwEmployeeBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -45,7 +53,6 @@
             this.colFullName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colFirstName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colLastName = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colPrefix = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colStatus = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colAddress = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCityId = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -64,6 +71,7 @@
             this.colBirthDate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colHireDate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colEmployeeProfile = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemColorEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemColorEdit();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.fTPAppDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -75,10 +83,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.vwEmployeeBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fTPAppDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvEmployee)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemColorEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fTPAppDataSetBindingSource)).BeginInit();
             this.SuspendLayout();
+            // 
+            // colPrefix
+            // 
+            this.colPrefix.FieldName = "Prefix";
+            this.colPrefix.Name = "colPrefix";
+            this.colPrefix.Visible = true;
+            this.colPrefix.VisibleIndex = 2;
             // 
             // ribbonControl1
             // 
@@ -88,9 +104,11 @@
             this.ribbonControl1.SearchEditItem,
             this.bbiAdd,
             this.bbiEdit,
-            this.bbiDelete});
+            this.bbiDelete,
+            this.bbiExport,
+            this.bbiTenure});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 5;
+            this.ribbonControl1.MaxItemId = 7;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
@@ -110,6 +128,7 @@
             this.bbiEdit.Id = 2;
             this.bbiEdit.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbiEdit.ImageOptions.SvgImage")));
             this.bbiEdit.Name = "bbiEdit";
+            this.bbiEdit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiEdit_ItemClick);
             // 
             // bbiDelete
             // 
@@ -119,10 +138,28 @@
             this.bbiDelete.Name = "bbiDelete";
             this.bbiDelete.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiDelete_ItemClick);
             // 
+            // bbiExport
+            // 
+            this.bbiExport.Caption = "Export";
+            this.bbiExport.Id = 5;
+            this.bbiExport.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbiExport.ImageOptions.SvgImage")));
+            this.bbiExport.Name = "bbiExport";
+            this.bbiExport.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiExport_ItemClick);
+            // 
+            // bbiTenure
+            // 
+            this.bbiTenure.Caption = "Tenure Calculation";
+            this.bbiTenure.Id = 6;
+            this.bbiTenure.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiTenure.ImageOptions.Image")));
+            this.bbiTenure.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiTenure.ImageOptions.LargeImage")));
+            this.bbiTenure.Name = "bbiTenure";
+            this.bbiTenure.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiTenure_ItemClick);
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup1});
+            this.ribbonPageGroup1,
+            this.ribbonPageGroup2});
             this.ribbonPage1.Name = "ribbonPage1";
             this.ribbonPage1.Text = "ribbonPage1";
             // 
@@ -131,7 +168,14 @@
             this.ribbonPageGroup1.ItemLinks.Add(this.bbiAdd);
             this.ribbonPageGroup1.ItemLinks.Add(this.bbiEdit);
             this.ribbonPageGroup1.ItemLinks.Add(this.bbiDelete);
+            this.ribbonPageGroup1.ItemLinks.Add(this.bbiExport);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
+            this.ribbonPageGroup1.Text = "CRUD";
+            // 
+            // ribbonPageGroup2
+            // 
+            this.ribbonPageGroup2.ItemLinks.Add(this.bbiTenure);
+            this.ribbonPageGroup2.Name = "ribbonPageGroup2";
             // 
             // layoutControl1
             // 
@@ -152,6 +196,8 @@
             this.gcEmployee.MainView = this.gvEmployee;
             this.gcEmployee.MenuManager = this.ribbonControl1;
             this.gcEmployee.Name = "gcEmployee";
+            this.gcEmployee.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemColorEdit1});
             this.gcEmployee.Size = new System.Drawing.Size(830, 363);
             this.gcEmployee.TabIndex = 4;
             this.gcEmployee.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -193,11 +239,33 @@
             this.colBirthDate,
             this.colHireDate,
             this.colEmployeeProfile});
+            this.gvEmployee.CustomizationFormBounds = new System.Drawing.Rectangle(906, 400, 252, 266);
+            gridFormatRule1.Column = this.colPrefix;
+            gridFormatRule1.ColumnApplyTo = this.colPrefix;
+            gridFormatRule1.Name = "Format0";
+            formatConditionRuleExpression1.Appearance.BackColor = System.Drawing.Color.Aqua;
+            formatConditionRuleExpression1.Appearance.ForeColor = System.Drawing.Color.Black;
+            formatConditionRuleExpression1.Appearance.Options.UseBackColor = true;
+            formatConditionRuleExpression1.Appearance.Options.UseForeColor = true;
+            formatConditionRuleExpression1.Expression = "[Prefix] = \'Mr.\'";
+            gridFormatRule1.Rule = formatConditionRuleExpression1;
+            gridFormatRule2.Column = this.colPrefix;
+            gridFormatRule2.ColumnApplyTo = this.colPrefix;
+            gridFormatRule2.Name = "Format1";
+            formatConditionRuleExpression2.Appearance.BackColor = System.Drawing.Color.Violet;
+            formatConditionRuleExpression2.Appearance.ForeColor = System.Drawing.Color.Black;
+            formatConditionRuleExpression2.Appearance.Options.UseBackColor = true;
+            formatConditionRuleExpression2.Appearance.Options.UseForeColor = true;
+            formatConditionRuleExpression2.Expression = "[Prefix] = \'Ms.\'";
+            gridFormatRule2.Rule = formatConditionRuleExpression2;
+            this.gvEmployee.FormatRules.Add(gridFormatRule1);
+            this.gvEmployee.FormatRules.Add(gridFormatRule2);
             this.gvEmployee.GridControl = this.gcEmployee;
             this.gvEmployee.Name = "gvEmployee";
             this.gvEmployee.OptionsBehavior.Editable = false;
             this.gvEmployee.OptionsBehavior.ReadOnly = true;
             this.gvEmployee.Click += new System.EventHandler(this.gvEmployee_Click);
+            this.gvEmployee.DoubleClick += new System.EventHandler(this.gvEmployee_DoubleClick);
             // 
             // colEmployeeID
             // 
@@ -205,6 +273,7 @@
             this.colEmployeeID.Name = "colEmployeeID";
             this.colEmployeeID.Visible = true;
             this.colEmployeeID.VisibleIndex = 0;
+            this.colEmployeeID.Width = 161;
             // 
             // colFullName
             // 
@@ -212,153 +281,123 @@
             this.colFullName.Name = "colFullName";
             this.colFullName.Visible = true;
             this.colFullName.VisibleIndex = 1;
+            this.colFullName.Width = 123;
             // 
             // colFirstName
             // 
             this.colFirstName.FieldName = "FirstName";
             this.colFirstName.Name = "colFirstName";
-            this.colFirstName.Visible = true;
-            this.colFirstName.VisibleIndex = 2;
             // 
             // colLastName
             // 
             this.colLastName.FieldName = "LastName";
             this.colLastName.Name = "colLastName";
-            this.colLastName.Visible = true;
-            this.colLastName.VisibleIndex = 3;
-            // 
-            // colPrefix
-            // 
-            this.colPrefix.FieldName = "Prefix";
-            this.colPrefix.Name = "colPrefix";
-            this.colPrefix.Visible = true;
-            this.colPrefix.VisibleIndex = 4;
             // 
             // colStatus
             // 
             this.colStatus.FieldName = "Status";
             this.colStatus.Name = "colStatus";
-            this.colStatus.Visible = true;
-            this.colStatus.VisibleIndex = 5;
             // 
             // colAddress
             // 
             this.colAddress.FieldName = "Address";
             this.colAddress.Name = "colAddress";
             this.colAddress.Visible = true;
-            this.colAddress.VisibleIndex = 6;
+            this.colAddress.VisibleIndex = 3;
+            this.colAddress.Width = 218;
             // 
             // colCityId
             // 
             this.colCityId.FieldName = "CityId";
             this.colCityId.Name = "colCityId";
-            this.colCityId.Visible = true;
-            this.colCityId.VisibleIndex = 7;
             // 
             // colStatesId
             // 
             this.colStatesId.FieldName = "StatesId";
             this.colStatesId.Name = "colStatesId";
-            this.colStatesId.Visible = true;
-            this.colStatesId.VisibleIndex = 8;
             // 
             // colProvinceId
             // 
             this.colProvinceId.FieldName = "ProvinceId";
             this.colProvinceId.Name = "colProvinceId";
-            this.colProvinceId.Visible = true;
-            this.colProvinceId.VisibleIndex = 9;
             // 
             // colDepartmentId
             // 
             this.colDepartmentId.FieldName = "DepartmentId";
             this.colDepartmentId.Name = "colDepartmentId";
-            this.colDepartmentId.Visible = true;
-            this.colDepartmentId.VisibleIndex = 10;
             // 
             // colDesignationId
             // 
             this.colDesignationId.FieldName = "DesignationId";
             this.colDesignationId.Name = "colDesignationId";
-            this.colDesignationId.Visible = true;
-            this.colDesignationId.VisibleIndex = 11;
             // 
             // colCityName
             // 
             this.colCityName.FieldName = "CityName";
             this.colCityName.Name = "colCityName";
-            this.colCityName.Visible = true;
-            this.colCityName.VisibleIndex = 12;
             // 
             // colStatesName
             // 
             this.colStatesName.FieldName = "StatesName";
             this.colStatesName.Name = "colStatesName";
-            this.colStatesName.Visible = true;
-            this.colStatesName.VisibleIndex = 13;
             // 
             // colProvinceName
             // 
             this.colProvinceName.FieldName = "ProvinceName";
             this.colProvinceName.Name = "colProvinceName";
-            this.colProvinceName.Visible = true;
-            this.colProvinceName.VisibleIndex = 14;
             // 
             // colDepartmentName
             // 
             this.colDepartmentName.FieldName = "DepartmentName";
             this.colDepartmentName.Name = "colDepartmentName";
             this.colDepartmentName.Visible = true;
-            this.colDepartmentName.VisibleIndex = 15;
+            this.colDepartmentName.VisibleIndex = 4;
+            this.colDepartmentName.Width = 150;
             // 
             // colDesignationName
             // 
             this.colDesignationName.FieldName = "DesignationName";
             this.colDesignationName.Name = "colDesignationName";
             this.colDesignationName.Visible = true;
-            this.colDesignationName.VisibleIndex = 16;
+            this.colDesignationName.VisibleIndex = 5;
+            this.colDesignationName.Width = 153;
             // 
             // colHomeNumber
             // 
             this.colHomeNumber.FieldName = "HomeNumber";
             this.colHomeNumber.Name = "colHomeNumber";
-            this.colHomeNumber.Visible = true;
-            this.colHomeNumber.VisibleIndex = 17;
             // 
             // colMobileNumber
             // 
             this.colMobileNumber.FieldName = "MobileNumber";
             this.colMobileNumber.Name = "colMobileNumber";
-            this.colMobileNumber.Visible = true;
-            this.colMobileNumber.VisibleIndex = 18;
             // 
             // colEmail
             // 
             this.colEmail.FieldName = "Email";
             this.colEmail.Name = "colEmail";
-            this.colEmail.Visible = true;
-            this.colEmail.VisibleIndex = 19;
             // 
             // colBirthDate
             // 
             this.colBirthDate.FieldName = "BirthDate";
             this.colBirthDate.Name = "colBirthDate";
-            this.colBirthDate.Visible = true;
-            this.colBirthDate.VisibleIndex = 20;
             // 
             // colHireDate
             // 
             this.colHireDate.FieldName = "HireDate";
             this.colHireDate.Name = "colHireDate";
-            this.colHireDate.Visible = true;
-            this.colHireDate.VisibleIndex = 21;
             // 
             // colEmployeeProfile
             // 
             this.colEmployeeProfile.FieldName = "EmployeeProfile";
             this.colEmployeeProfile.Name = "colEmployeeProfile";
-            this.colEmployeeProfile.Visible = true;
-            this.colEmployeeProfile.VisibleIndex = 22;
+            // 
+            // repositoryItemColorEdit1
+            // 
+            this.repositoryItemColorEdit1.AutoHeight = false;
+            this.repositoryItemColorEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemColorEdit1.Name = "repositoryItemColorEdit1";
             // 
             // Root
             // 
@@ -406,6 +445,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.vwEmployeeBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fTPAppDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvEmployee)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemColorEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fTPAppDataSetBindingSource)).EndInit();
@@ -454,6 +494,10 @@
         private DevExpress.XtraBars.BarButtonItem bbiAdd;
         private DevExpress.XtraBars.BarButtonItem bbiEdit;
         private DevExpress.XtraBars.BarButtonItem bbiDelete;
+        private DevExpress.XtraBars.BarButtonItem bbiExport;
+        private DevExpress.XtraBars.BarButtonItem bbiTenure;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
+        private DevExpress.XtraEditors.Repository.RepositoryItemColorEdit repositoryItemColorEdit1;
     }
 }
 

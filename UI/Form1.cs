@@ -1,4 +1,5 @@
 ﻿using BusinessLogic;
+using DevExpress.XtraEditors;
 using Model;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using BusinessLogic.Extensions;
 
 namespace UI
 {
@@ -26,7 +28,7 @@ namespace UI
             gcEmployee.DataSource = datasource;
         }
 
-        private void AddEmployee() //Add & Update
+        private void AddEmployee() //Add
         {
             var employee = new Employee();
             var form = new NewEmployeeForm(employee);
@@ -36,6 +38,21 @@ namespace UI
         private void bbiAdd_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             AddEmployee();
+        }
+
+        private void EditEmployee() //Edit
+        {
+            var rowHandle = gvEmployee.FocusedRowHandle;
+            var id = (int)gvEmployee.GetRowCellValue(rowHandle, "EmployeeID");
+            var employee = EmployeeBL.GetEmployeeById(id);
+            var form = new NewEmployeeForm(employee);
+            form.ShowDialog();
+            LoadGridDataSource();
+        }
+
+        private void bbiEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            EditEmployee();
         }
 
         private void DeleteEmployee() //Delete
@@ -51,6 +68,21 @@ namespace UI
             DeleteEmployee();
         }
 
+        private void bbiExport_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) //Export
+        {
+            gvEmployee.ShowRibbonPrintPreview();
+        }
+
+        private void bbiTenure_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var rowHandle = gvEmployee.FocusedRowHandle;
+            var id = (int)gvEmployee.GetRowCellValue(rowHandle, "EmployeeID");
+            var tenurecalc = EmployeeBL.GetEmployeeViewById(id);
+            XtraMessageBox.Show($"Employee Age: {(tenurecalc.GetEmployeeAgeInYears()).ToString("F2")} years");
+        }
+
+        /*-------------------------------*/
+
         private void gvEmployee_Click(object sender, EventArgs e)
         {
             try
@@ -63,6 +95,11 @@ namespace UI
             {
                 Console.WriteLine($"Error Occurred: {ex.Message}");
             }
+        }
+
+        private void gvEmployee_DoubleClick(object sender, EventArgs e)
+        {
+            EditEmployee();
         }
     }
 }
